@@ -1,0 +1,47 @@
+package PriceCalculation;
+
+import java.util.Scanner;
+/*
+this class will allow users to access a menu of airline options to select
+ */
+
+public class AirlineSelection {
+    public static void main(String[] args){
+
+        System.out.print("Welcome Please Select the Airline of your choice");
+        System.out.println("----"); //indentation to print table of airlines
+        /*
+        this array will print a table of the listed airlines. For the sake of this demo
+        I have only selected five airlines to keep the code and functionality as simple as possible.
+         */
+        String[] airlines = {"Delta", "American Airlines", "JetBlue", "United", "Southwest"};
+        for (int counter = 0; counter <=4; counter ++){
+            System.out.println(counter +"\t" + airlines[counter]);
+        }
+        System.out.print("Menu: Please enter a number corresponding to the airline of your choice");
+        System.out.println("---");
+        System.out.println("** please note that the selection goes from 0-4 and not 1-5 when selecting your desired airline");
+        System.out.println("------");
+
+            Scanner input = new Scanner(System.in);
+        int selection = input.nextInt();
+
+        if(selection == 0){
+            System.out.println("you have selected"+"_"+airlines[0]+"_"+"airlines");
+        }
+        if(selection == 1){
+            System.out.println("you have selected" + "_"+ airlines[1]);
+        }
+        if(selection == 2){
+            System.out.println("you have selected " +"_"+ airlines[2]+"_"+ "airlines");
+        }
+        if(selection == 3){
+            System.out.println("you have selected"+"_"+ airlines[3]+"_"+ "airlines");
+        }
+        if(selection == 4){
+            System.out.println("you have selected"+ "_"+ airlines[4]+ "_" + "airlines");
+        }
+
+    }
+
+}
