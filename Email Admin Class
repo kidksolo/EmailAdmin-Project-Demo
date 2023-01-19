@@ -1,0 +1,93 @@
+package EmailAdminApp;
+import java.util.Scanner;
+public class Email {
+    private String firstName;
+    private String lastName;
+    private String password;
+    private String department;
+    private String email;
+    private int defaultPasswordLength = 10; //setting the length returns a random password in main class
+    private int mailboxCapacity = 500;
+    private String alternateEmail;
+    private String companySuffix = "company.com";
+
+//adding private (encapsulating) our objects so that they cannot be accessed by another class
+
+    //constructor to receive first and last name
+    public Email(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        System.out.println("EMAIL CREATED: " + this.firstName + this.lastName);
+        this.department = setDepartment(); //setting department class = set method
+        System.out.println("department: " + this.department);
+        this.password = randomPassword(defaultPasswordLength);
+        System.out.println("Your password is: " + this.password);
+        //combining elements for proper email syntax
+        email = firstName.toLowerCase() + "." + lastName.toLowerCase()+ "@"+ department+ "."+ companySuffix;
+        System.out.println("Your company generated email is: " + email);
+    }
+
+    //ask for department
+    //-call a method asking for dept
+    //- return dept
+    private String setDepartment() {
+        System.out.print("Enter the dept \n1 for sales\n2 for development\n3 for accounting \n0 for none\n Enter department code: ");
+        Scanner input = new Scanner(System.in);
+        int departmentChoice = input.nextInt(); //enter the dept number
+        if (departmentChoice == 1) {
+            return "sales";
+        } else if (departmentChoice == 2) {
+            return "dev";
+        } else if (departmentChoice == 3) {
+            return "accounting";
+        } else {
+            return " ";
+        }
+    }
+    //generating a random password (method call)
+    private String randomPassword(int length ){
+        String passwordSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%";
+        //allows us to change length/scope of password requirements
+        char[] password = new char[length];
+        for(int i = 0; i<length; i++){
+           int rand = (int) (Math.random() * passwordSet.length());
+            password[i] = passwordSet.charAt(rand);
+            //generates a random number within the scope of password set
+            //takes random number and individually passes it through the array
+        }
+        return new String (password);
+    }
+
+    public void setMailboxCapacity(int capacity){
+        this.mailboxCapacity = capacity;
+        //encapsulating to set properties
+
+    }
+    public void setAlternateEmail(String altEmail){
+        this.alternateEmail = altEmail;
+    }
+    public void changePassword( String password){
+        this.password = password;
+    }
+
+    public int getMailboxCapacity() {
+        return mailboxCapacity;
+        //shows us mailboxcapacity
+    }
+    public String getAlternateEmail()
+    {return alternateEmail;}
+
+    public String getPassword(){return password;}
+
+    public String showInfo(){
+        return "display name:" + firstName + " "+ lastName +
+                "company email"+ email +
+                "mailbox capacity" + mailboxCapacity+ "mb";
+    }
+}
+
+
+    //set mailbox capacity
+    //set alternate email
+    //change the password
+
